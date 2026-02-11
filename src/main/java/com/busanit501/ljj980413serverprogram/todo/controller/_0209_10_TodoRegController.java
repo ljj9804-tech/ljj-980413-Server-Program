@@ -73,9 +73,6 @@ public class _0209_10_TodoRegController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        // 받을 때 한글 설정,
-//        req.setCharacterEncoding("UTF-8");
-
         log.info("todo/register 글쓰기 로직 처리하는 곳입니다.");
         log.info("PRG 패턴으로 글쓰기 post 작업 후, 리다이렉트 목록 화면으로 이동하기.");
 
@@ -87,10 +84,6 @@ public class _0209_10_TodoRegController extends HttpServlet {
                 .build();
         //서비스에 전달.
         try {
-            // 보낼 때 한글 설정,
-            // 나중에, 서버에 한번만 설정해서, 따로 설정 없이, 이용만 하면됨.
-//            resp.setContentType("text/html;charset=UTF-8");
-//            resp.setCharacterEncoding("UTF-8");
             todoService.register(todoDTO);
         } catch (Exception e) {
             e.printStackTrace();

@@ -30,6 +30,10 @@
      </c:forEach>
  </ul>
 
+<div class="float-end mb-3">
+    <button type="button" class="btn btn-success" onclick="location.href='/member/register'">신규 회원가입</button>
+</div>
+
 <form action="/logout_0209" method="post">
     <button>로그아웃</button>
 </form>

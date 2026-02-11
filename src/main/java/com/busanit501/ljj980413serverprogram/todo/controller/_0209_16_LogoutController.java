@@ -17,15 +17,14 @@ public class _0209_16_LogoutController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        log.info("로그아웃 처리를 담당하느 doPost 입니다. ");
+        log.info("로그아웃 처리를 담당하는 doPost 입니다. ");
 
-        // 임시 로그아웃 효과,
         HttpSession session = req.getSession();
-        // 세션의 loginInfo 라는 키를 삭제하면 됩니다.
+
         session.removeAttribute("loginInfo");
-        // 적용하기.
+
         session.invalidate();
-        // 리다이렉트
+
         resp.sendRedirect("/login_0209");
 
     }

@@ -32,7 +32,7 @@ public enum _0209_2_TodoService {
     }
 
 
-    // 0204, 3 , 기능 변경해서 사용하기.
+
     // 기능구현,
     // 글쓰기
     public void register(_0209_6_TodoDTO todoDTO) throws Exception {
@@ -88,11 +88,9 @@ public enum _0209_2_TodoService {
         return dtoList;
     } //listAll 닫기
 
-    // 0205_1 ,
+
     //Todo 조회
-    // 화면에서, 무엇을 조회할지는 알고 있다. 예시) tno = 1
     public _0209_6_TodoDTO get(Long tno) throws Exception {
-        // DB로부터 전달 받아서, 사용.
         _0209_5_TodoVO todoVO = dao.selectOne(tno);
         // vo -> dto 타입으로 , 모델 맵퍼 이용해서, 변환.
         _0209_6_TodoDTO todoDTO = modelMapper.map(todoVO, _0209_6_TodoDTO.class);

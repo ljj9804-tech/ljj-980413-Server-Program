@@ -28,39 +28,34 @@ public class _0209_13_LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        log.info("로그인 처리를 담당하느 doPost 입니다. ");
+        log.info("로그인 처리를 담당하는 doPost 입니다. ");
 
         // 화면에서, 전달받은 mid, mpw 정보를 가져오기. 무조건 문자열이다.
         String mid = req.getParameter("mid");
         String mpw = req.getParameter("mpw");
 
         //===================================================================
-        // 자동로그인 기능 추가 0209, 순서1 , 화면에서, 체크를 한 경우, 결과 문자열 : "on"
+
         String auto = req.getParameter("auto");
-        // 자동로그인 체크 여부의 상태 변수.
+
         boolean rememberMe = auto != null && auto.equals("on");
         try {
-            //
             _0209_18_MemberDTO memberDTO = memberService.login(mid, mpw);
             if (rememberMe) {
-                //임시로 UUID 클래스를 이용해서, 랜덤한 문자열 생성.
                 String uuid = UUID.randomUUID().toString();
                 log.info("생성된 uuid 값 확인: " + uuid);
-                // 서비스의 도움의 받아서, DB 에 해당 유저의 uuid 컬럼 부분을 업데이트 하기.
                 memberService.updateUuid(mid,uuid);
-                // 멤버 테이블에 업데이트가 된 uuid를 현재 로그인한 유저 상태에도 똑같이 업데이트
+
                 memberDTO.setUuid(uuid);
 
-                //쿠키 전달.  서버 : 쿠키 생성, 서버가 웹브라우저에게 쿠키를 전달함.
                 Cookie rememberCookie = new Cookie("remember-me", uuid);
-                // 유효기간 : 7일
+
                 rememberCookie.setMaxAge(60 * 60 * 24 * 7);
                 rememberCookie.setPath("/");
-                // 서버가 전달하기.
-                resp.addCookie(rememberCookie);
 
+                resp.addCookie(rememberCookie);
             }
-            // 세션에 기록하기.
+
             HttpSession session = req.getSession();
             session.setAttribute("loginInfo", memberDTO);
             resp.sendRedirect("/todo/list_0209");

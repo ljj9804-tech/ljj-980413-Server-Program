@@ -63,17 +63,11 @@ public class _0209_11_TodoUpdateController extends HttpServlet {
         // 받을 때 한글 설정,
         req.setCharacterEncoding("UTF-8");
 
-        // 주의사항,
-        // 수정시, 완료 여부, 체크박스 변수명 : finished 넘어옴, 문자열 체크 되면 : "on"
-        // 화면으로부터 전달받은 데이터를 모두 가져오고, 이상태는 모두 문자열임.
-        // 그래서, dto 에 담을 때 각 타입에 맞게 변형해서 담기.
         String finishedStr = req.getParameter("finished");
         String tno = req.getParameter("tno");
         String title = req.getParameter("title");
         String dueDate = req.getParameter("dueDate");
 
-        // 수정할 내용을 받은 상태, 수정된 내용으로 , 서비스에게 일을 시키기.
-        // 넘어온 데이터를 dto 담기.
         _0209_6_TodoDTO todoDTO = _0209_6_TodoDTO.builder()
                 .tno(Long.parseLong(tno))
                 .title(title)

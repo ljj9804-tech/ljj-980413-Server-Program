@@ -22,6 +22,10 @@
     <input type="checkbox" name="auto">자동로그인
     <br>
     <button type="submit">로그인</button>
+    <div class="mt-3 text-center">
+        <p>아직 회원이 아니신가요?</p>
+        <a href="/member/register" class="btn btn-outline-primary">회원가입 하러가기</a>
+    </div>
 </form>
 
 </body>

@@ -21,7 +21,7 @@ public class _0209_12_TodoDeleteController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        // 삭제를 할 때, 어떤 tno를 삭제할지 알고 있음. 그래서, tno 번호도 알고 있음.
+
         String tnoStr = req.getParameter("tno");
         Long tno = Long.parseLong(tnoStr);
 
